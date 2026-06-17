@@ -1,0 +1,26 @@
+name: Validate workflows
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate-json:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate workflow JSON files
+        run: |
+          shopt -s nullglob
+          files=(workflows/*.json)
+          if [ ${#files[@]} -eq 0 ]; then
+            echo "No workflow files found in workflows/"
+            exit 1
+          fi
+          for file in "${files[@]}"; do
+            python3 -m json.tool "$file" > /dev/null
+            echo "✓ $file"
+          done

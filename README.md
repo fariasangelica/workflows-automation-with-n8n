@@ -1,15 +1,31 @@
 # Workflows Automation with n8n
 
-n8n workflow exports stored as JSON in `workflows/`.
+[![Validate workflows](https://github.com/fariasangelica/workflows-automation-with-n8n/actions/workflows/validate-workflows.yml/badge.svg)](https://github.com/fariasangelica/workflows-automation-with-n8n/actions/workflows/validate-workflows.yml)
 
-## Currency Exchange
+n8n workflow exports stored as JSON in [`workflows/`](workflows/).
 
-[`workflows/currency-exchange.json`](workflows/currency-exchange.json) — form to pick base/target currencies and fetch the exchange rate from [open.er-api.com](https://open.er-api.com/).
+## Workflows
+
+| Workflow | File | Description |
+|----------|------|-------------|
+| Currency Exchange | [`currency-exchange.json`](workflows/currency-exchange.json) | Form + exchange rate lookup |
+
+### Currency Exchange
+
+Form to pick base/target currencies and fetch the rate from [open.er-api.com](https://open.er-api.com/).
 
 ```
 Form Trigger → HTTP Request → Edit Fields
 ```
 
-![Workflow](docs/images/currency-exchange-workflow.png)
+![n8n workflow diagram for Currency Exchange](docs/images/currency-exchange-workflow.png)
 
-![Form](docs/images/currency-exchange-form.png)
+![Currency Exchange web form](docs/images/currency-exchange-form.png)
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## License
+
+[MIT](LICENSE)
