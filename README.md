@@ -9,6 +9,7 @@ n8n workflow exports stored as JSON in [`workflows/`](workflows/).
 | Workflow | File | Description |
 |----------|------|-------------|
 | Currency Exchange | [`currency-exchange.json`](workflows/currency-exchange.json) | Form + exchange rate lookup |
+| Event Signup | [`event-signup.json`](workflows/event-signup.json) | Self-service event registration form |
 
 ### Currency Exchange
 
@@ -21,6 +22,16 @@ Form Trigger → HTTP Request → Edit Fields
 ![n8n workflow diagram for Currency Exchange](docs/images/currency-exchange-workflow.png)
 
 ![Currency Exchange web form](docs/images/currency-exchange-form.png)
+
+### Event Signup
+
+Self-service form for Acme event attendees — collects first name, last name, and email, then outputs a clean registration record.
+
+```
+Event Signup (Form Trigger) → Edit Fields
+```
+
+**Output:** `full_name`, `email`, `registered_at`
 
 ## Contributing
 

@@ -1,0 +1,89 @@
+{
+  "name": "Event Signup",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Event Signup",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "First Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Last Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Email",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "demo-event-form-001",
+      "name": "Event Signup",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        32,
+        -16
+      ],
+      "webhookId": "demo-event-signup-form"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "field-name",
+              "name": "full_name",
+              "value": "={{ $json['First Name'] }} {{ $json['Last Name'] }}",
+              "type": "string"
+            },
+            {
+              "id": "field-email",
+              "name": "email",
+              "value": "={{ $json['Email'] }}",
+              "type": "string"
+            },
+            {
+              "id": "field-registered",
+              "name": "registered_at",
+              "value": "={{ $now }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "demo-event-set-002",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        304,
+        -16
+      ]
+    }
+  ],
+  "connections": {
+    "Event Signup": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "id": "d8gQexF8itEoOJzq"
+}
