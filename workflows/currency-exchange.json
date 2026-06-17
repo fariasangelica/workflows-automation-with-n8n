@@ -1,0 +1,157 @@
+{
+  "name": "Currency Exchange",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Currency Exchange",
+        "formDescription": "Select the currencies you'd like to compare.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Base Currency",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "BRL"
+                  },
+                  {
+                    "option": "EUR"
+                  },
+                  {
+                    "option": "GBP"
+                  },
+                  {
+                    "option": "JPY"
+                  },
+                  {
+                    "option": "CLP"
+                  }
+                ]
+              },
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Target Currency",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "BRL"
+                  },
+                  {
+                    "option": "EUR"
+                  },
+                  {
+                    "option": "GBP"
+                  },
+                  {
+                    "option": "JPY"
+                  },
+                  {
+                    "option": "CLP"
+                  },
+                  {
+                    "option": "AUD"
+                  },
+                  {
+                    "option": "CAD"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "demo-form-001",
+      "name": "Form Trigger",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "demo-currency-form"
+    },
+    {
+      "parameters": {
+        "url": "=https://open.er-api.com/v6/latest/{{ $json['Base Currency'] }}",
+        "options": {}
+      },
+      "id": "demo-http-002",
+      "name": "HTTP Request",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        300,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "field-base",
+              "name": "Base Currency",
+              "value": "={{ $('Form Trigger').item.json['Base Currency'] }}",
+              "type": "string"
+            },
+            {
+              "id": "field-target",
+              "name": "Target Currency",
+              "value": "={{ $('Form Trigger').item.json['Target Currency'] }}",
+              "type": "string"
+            },
+            {
+              "id": "field-rate",
+              "name": "Exchange Rate",
+              "value": "={{ $json.rates[$('Form Trigger').item.json['Target Currency']] }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "demo-set-003",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        560,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Form Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "id": "7JhTdS9QJYVXex8A"
+}
