@@ -33,6 +33,8 @@ Event Signup (Form Trigger) → Edit Fields
 
 **Output:** `full_name`, `email`, `registered_at`
 
+![Event Signup workflow execution in n8n](docs/images/event-signup-workflow.png)
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
