@@ -1,0 +1,77 @@
+{
+  "name": "timestamp",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Timestamps",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Event name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Atendee name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Email",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "demo-timestamp-form-001",
+      "name": "Event Signup",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "demo-timestamp-form"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4e9adfec-bebd-4dc7-8663-48bce6e10c6a",
+              "name": "submitted_at",
+              "value": "={{ $now }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "demo-timestamp-set-002",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        0
+      ]
+    }
+  ],
+  "connections": {
+    "Event Signup": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "id": "QdVykrebbmaIImoh"
+}

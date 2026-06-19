@@ -12,6 +12,7 @@ n8n workflow exports stored as JSON in [`workflows/`](workflows/).
 | Event Signup | [`event-signup.json`](workflows/event-signup.json) | Self-service event registration form |
 | Contact Record | [`contact-record.json`](workflows/contact-record.json) | Structured partner contact record |
 | Unnecessary Fields | [`unnecessary-fields.json`](workflows/unnecessary-fields.json) | Filter contact fields for mailing list |
+| Timestamp | [`timestamp.json`](workflows/timestamp.json) | Event signup with submission timestamp |
 
 ### Currency Exchange
 
@@ -52,6 +53,16 @@ Manual Trigger → Edit Fields → Edit Fields1
 ```
 
 **Output:** `contact`, `email`
+
+### Timestamp
+
+A equipe de eventos da Acme quer saber exatamente quando cada participante se inscreveu, para acompanhar a velocidade das inscrições e encerrar o cadastro no momento certo. O formulário captura os dados do participante, mas você também precisa registrar o momento do envio.
+
+```
+Form Trigger → Edit Fields
+```
+
+**Output:** `Event name`, `Atendee name`, `Email`, `submitted_at`
 
 ## Contributing
 
