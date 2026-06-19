@@ -11,6 +11,7 @@ n8n workflow exports stored as JSON in [`workflows/`](workflows/).
 | Currency Exchange | [`currency-exchange.json`](workflows/currency-exchange.json) | Form + exchange rate lookup |
 | Event Signup | [`event-signup.json`](workflows/event-signup.json) | Self-service event registration form |
 | Contact Record | [`contact-record.json`](workflows/contact-record.json) | Structured partner contact record |
+| Unnecessary Fields | [`unnecessary-fields.json`](workflows/unnecessary-fields.json) | Filter contact fields for mailing list |
 
 ### Currency Exchange
 
@@ -41,6 +42,16 @@ Manual Trigger → Edit Fields
 ```
 
 **Output:** `company_name`, `contact`, `email`
+
+### Unnecessary Fields
+
+A equipe de parcerias da Acme cria registros de contato completos, mas o sistema de mailing list só precisa de nome e email — não da empresa. Você precisa adicionar uma etapa que filtre os campos desnecessários antes de passar os dados adiante.
+
+```
+Manual Trigger → Edit Fields → Edit Fields1
+```
+
+**Output:** `contact`, `email`
 
 ## Contributing
 

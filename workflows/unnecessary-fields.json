@@ -1,0 +1,109 @@
+{
+  "name": "unnecessary-fields",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "demo-filter-trigger-001",
+      "name": "When clicking ‘Execute workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -304,
+        -64
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "52e24795-2e02-4ea0-839a-363a018bec92",
+              "name": "company_name",
+              "value": "Acme Corp",
+              "type": "string"
+            },
+            {
+              "id": "2f49cdef-2b43-4d9d-8aad-aac9582bdde5",
+              "name": "contact",
+              "value": "Jordan Lee",
+              "type": "string"
+            },
+            {
+              "id": "3f5493ac-e84b-437e-8d4f-dcc7655bb992",
+              "name": "email",
+              "value": "jordan.lee@acme.example",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "demo-filter-set-002",
+      "name": "Edit Fields",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -96,
+        -64
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0160e8bb-de9b-4e3d-b13e-258b85c9b576",
+              "name": "contact",
+              "value": "={{ $json.contact }}",
+              "type": "string"
+            },
+            {
+              "id": "784fe613-ad3c-41d6-9d5c-6d8c5d87a41f",
+              "name": "email",
+              "value": "={{ $json.email }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "demo-filter-set-003",
+      "name": "Edit Fields1",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        112,
+        -64
+      ]
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "id": "unnecessaryFields01"
+}
