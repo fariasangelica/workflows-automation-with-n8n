@@ -20,21 +20,17 @@ Form to pick base/target currencies and fetch the rate from [open.er-api.com](ht
 Form Trigger → HTTP Request → Edit Fields
 ```
 
-![n8n workflow diagram for Currency Exchange](docs/images/currency-exchange-workflow.png)
-
-![Currency Exchange web form](docs/images/currency-exchange-form.png)
+**Output:** `Base Currency`, `Target Currency`, `Exchange Rate`
 
 ### Event Signup
 
 Self-service form for Acme event attendees — collects first name, last name, and email, then outputs a clean registration record.
 
 ```
-Event Signup (Form Trigger) → Edit Fields
+Form Trigger → Edit Fields
 ```
 
 **Output:** `full_name`, `email`, `registered_at`
-
-![Event Signup workflow execution in n8n](docs/images/event-signup-workflow.png)
 
 ### Contact Record
 
